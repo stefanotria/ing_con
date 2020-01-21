@@ -7,7 +7,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-PATH = 'dataset'
+PATH = 'paintings'
 
 train_dir = os.path.join(PATH, 'train')
 validation_dir = os.path.join(PATH, 'test')
@@ -21,7 +21,7 @@ for n in classes:
 for n in classes:
     total_val += len(os.listdir(os.path.join(validation_dir, n)))
 
-batch_size = 5
+batch_size = 6
 epochs = 15
 IMG_HEIGHT = 64
 IMG_WIDTH = 64
@@ -46,7 +46,7 @@ sample_test_images, _ = next(val_data_gen)
 
 # This function will plot images in the form of a grid with 1 row and 5 columns where images are placed in each column.
 def plotImages(images_arr):
-    fig, axes = plt.subplots(1, 5, figsize=(7, 7))
+    fig, axes = plt.subplots(1, total_val, figsize=(7, 7))
     axes = axes.flatten()
     for img, ax in zip(images_arr, axes):
         ax.imshow(img)
@@ -81,7 +81,7 @@ history = model.fit_generator(
     validation_steps=total_val // batch_size
 )
 
-plotImages(sample_test_images[:5])
+plotImages(sample_test_images[:total_val])
 
 STEP_SIZE_TEST = val_data_gen.n // val_data_gen.batch_size
 val_data_gen.reset()
