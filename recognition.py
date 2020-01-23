@@ -7,8 +7,8 @@ from PIL import Image
 from pathlib import Path
 import numpy as np
 
-class Recognition:
 
+class Recognition:
     model = ""
     dataset = ""
     epochs = 15
@@ -26,13 +26,14 @@ class Recognition:
             self.loadModel("model")
         else:
             self.defineModel()
-            self.saveModel("model")
             self.compileModel()
             self.fitModel()
+            self.saveModel("model")
 
     def defineModel(self):
         self.model = Sequential([
-            Conv2D(16, 3, padding='same', activation='relu', input_shape=(self.dataset.IMG_HEIGHT, self.dataset.IMG_WIDTH, 3)),
+            Conv2D(16, 3, padding='same', activation='relu',
+                   input_shape=(self.dataset.IMG_HEIGHT, self.dataset.IMG_WIDTH, 3)),
             MaxPooling2D(),
             Conv2D(32, 3, padding='same', activation='relu'),
             MaxPooling2D(),
@@ -45,8 +46,8 @@ class Recognition:
 
     def compileModel(self):
         self.model.compile(optimizer='adam',
-                      loss='binary_crossentropy',
-                      metrics=['accuracy'])
+                           loss='binary_crossentropy',
+                           metrics=['accuracy'])
 
     def fitModel(self):
         total_train = self.train_data_gen.samples
@@ -74,9 +75,9 @@ class Recognition:
 
         STEP_SIZE_TEST = self.val_data_gen.n // self.dataset.batch_size
         self.val_data_gen.reset()
-        pred = self.model.predict(self.val_data_gen,
-                             steps=STEP_SIZE_TEST,
-                             verbose=1)
+        pred = self.model.predict_generator(self.val_data_gen,
+                                            steps=STEP_SIZE_TEST,
+                                            verbose=1)
 
         predicted_class_indices = np.argmax(pred, axis=1)
 
@@ -87,6 +88,15 @@ class Recognition:
         predictions = [labels[k] for k in predicted_class_indices]
 
         return predictions
+
+    def predictImage(self, image):
+        IMAGE_SHAPE = (64, 64)
+        image = image.resize(IMAGE_SHAPE)
+        img = np.array(image) / 255.0
+        result = self.model.predict(img[np.newaxis, ...])
+        predicted_class = np.argmax(result[0], axis=-1)
+
+        return predicted_class
 
     def saveModel(self, nome):
         self.model.save(nome + ".h5")

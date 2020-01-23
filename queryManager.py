@@ -17,12 +17,12 @@ class Query:
         self.where += """?Paint wdt:P170 ?a .
               ?a rdfs:label ?Author ."""
 
-    # restituisce la data in cui é stata realizzata l'opera
+    # restituisce la data in cui e' stata realizzata l'opera
     def getDate(self):
         self.select += "?Date "
         self.where += "?Paint wdt:P571 ?Date . \n"
 
-    # restituisce il nome del museo in cui é custodita l'opera
+    # restituisce il nome del museo in cui e' custodita l'opera
     def getMuseum(self):
         self.select += "?Museum "
         self.where += """?Paint wdt:P276 ?m .
