@@ -13,16 +13,16 @@ rec = Recognition(ds)
 # print("Ecco le opere riconosciute")
 # print(predictions)
 
-picture = raw_input("Inserisci il nome dell'immagine da predire : ") #picture.jpg
+picture = "picture.jpg"
 image = Image.open(picture)
 predicted_class = rec.predictImage(image)
 
 print(predicted_class)
 
 predicted_label = ds.getLabelByClass('Artwork', predicted_class) #Restituisce il nome
-ds.getLabelByClass('Code', predicted_class) #Restituisce il codice
+code = ds.getLabelByClass('Code', predicted_class) #Restituisce il codice
 
-print "Cerco informazioni per: " + predicted_label
+print("Cerco informazioni per: " + predicted_label)
 query = Query(predicted_label)
 query.getAuthor()
 query.getMuseum()
@@ -32,3 +32,4 @@ query.getDimension()
 query.getMovement()
 query.buildUp()
 query.runQuery()
+query.getInfo()
