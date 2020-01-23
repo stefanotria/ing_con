@@ -1,15 +1,21 @@
-import queryManager
-import recognition
+from queryManager import Query
+from recognition import Recognition
+from dataset import Dataset
 
-rec = recognition.Recognition()
-rec.loadDataset()
-model = rec.defineModel()
-predictions = rec.predictImages(model)
+ds = Dataset(5)
+rec = Recognition(ds)
+
+predictions = rec.predictImages()
 
 print("Ecco le opere riconosciute")
 print(predictions)
-
-manager = queryManager.QueryManager("The Scream")
-#author = manager.getAuthor()
-museum = manager.getMuseum()
-#date = manager.getDate()
+print("Cerco informazioni per: ", predictions[0])
+query = Query(predictions[0])
+query.getAuthor()
+query.getMuseum()
+query.getDate()
+query.getGenre()
+query.getDimension()
+query.getMovement()
+query.buildUp()
+query.runQuery()
