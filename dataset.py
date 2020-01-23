@@ -56,6 +56,6 @@ class Dataset:
     def getLabelByClass(self, column, index):
         labels = pd.read_csv("label.csv", sep=';')
         label = labels[column].iloc[index]
-        print label
+        print(label)
 
         return label
