@@ -17,37 +17,37 @@ class Query:
     # restituisce il nome dell'autore del dipinto
     def getAuthor(self):
         self.select += "?Author "
-        self.where += """?Paint wdt:P170 ?a .
-              ?a rdfs:label ?Author ."""
+        self.where += """OPTIONAL{?Paint wdt:P170 ?a .}
+              OPTIONAL{?a rdfs:label ?Author .}"""
 
-    # restituisce la data in cui é stata realizzata l'opera
+    # restituisce la data in cui e' stata realizzata l'opera
     def getDate(self):
         self.select += "?Date "
-        self.where += "?Paint wdt:P571 ?Date . \n"
+        self.where += "OPTIONAL{?Paint wdt:P571 ?Date .} \n"
 
-    # restituisce il nome del museo in cui é custodita l'opera
+    # restituisce il nome del museo in cui e' custodita l'opera
     def getMuseum(self):
         self.select += "?Museum "
-        self.where += """?Paint wdt:P276 ?m .
-              ?m rdfs:label ?Museum .\n"""
+        self.where += """OPTIONAL{?Paint wdt:P276 ?m .}
+              OPTIONAL{?m rdfs:label ?Museum .}\n"""
 
     # restituisce il movimento del dipinto
     def getMovement(self):
         self.select += "?Movement "
-        self.where += """?Paint wdt:P135  ?mov .
-                        ?mov rdfs:label ?Movement .\n"""
+        self.where += """OPTIONAL{?Paint wdt:P135  ?mov .}
+                        OPTIONAL{?mov rdfs:label ?Movement .}\n"""
 
     # restituisce il genere del dipinto
     def getGenre(self):
         self.select += "?Genre"
-        self.where += """?Paint wdt:P136 ?gen .
-                        ?gen rdfs:label ?Genre .\n"""
+        self.where += """OPTIONAL{?Paint wdt:P136 ?gen .}
+                        OPTIONAL{?gen rdfs:label ?Genre .}\n"""
 
     # restituisce altezza e larghezza del dipinto
     def getDimension(self):
         self.select += "?Height ?Width"
-        self.where += """?Paint wdt:P2048  ?Height .
-                        ?Paint wdt:P2049 ?Width .\n"""
+        self.where += """OPTIONAL{?Paint wdt:P2048  ?Height .}
+                        OPTIONAL{?Paint wdt:P2049 ?Width .}\n"""
 
     def buildUp(self):
         self.query = "SELECT " + self.select
@@ -79,7 +79,6 @@ class Query:
         return results
 
     def runQuery(self):
-        print(self.query)
         results = self.setQuery(self.query, self.wd)
         response = {}
         for result in results["results"]["bindings"]:
