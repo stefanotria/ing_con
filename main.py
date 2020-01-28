@@ -23,7 +23,7 @@ predicted_label = ds.getLabelByClass('Artwork', predicted_class) #Restituisce il
 code = ds.getLabelByClass('Code', predicted_class) #Restituisce il codice
 
 print("Cerco informazioni per: " + predicted_label)
-query = Query(predicted_label)
+query = Query(code)
 query.getAuthor()
 query.getMuseum()
 query.getDate()
@@ -32,4 +32,4 @@ query.getDimension()
 query.getMovement()
 query.buildUp()
 query.runQuery()
-query.getInfo()
+query.getInfo(predicted_label)
