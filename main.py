@@ -1,11 +1,11 @@
 from PIL import Image
 
 import numpy as np
-
+from neighbors import Neighbors
 from queryManager import Query
 from recognition import Recognition
 from dataset import Dataset
-
+from collection import Collection
 ds = Dataset(5)
 rec = Recognition(ds)
 
@@ -31,5 +31,14 @@ query.getGenre()
 query.getDimension()
 query.getMovement()
 query.buildUp()
-query.runQuery()
-query.getInfo(predicted_label)
+response = query.runQuery()
+print("risposta ", response)
+info = query.getInfo(predicted_label, response["Author"])
+print(info)
+location = query.getLocation()
+
+coll = query.createCollection(location["Location"])
+Collection(coll)
+instance = [response["Author"], response["Museum"], response["Genre"], response["Movement"]]
+nn = Neighbors(instance)
+nn.getNeighbors(3)
