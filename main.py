@@ -1,6 +1,7 @@
 from PIL import Image
 
 import numpy as np
+from tfidf import ContentNeighbor
 from neighbors import Neighbors
 from queryManager import Query
 from recognition import Recognition
@@ -39,6 +40,11 @@ location = query.getLocation()
 
 coll = query.createCollection(location["Location"])
 Collection(coll)
+cont = query.getContent()
 instance = [response["Author"], response["Museum"], response["Genre"], response["Movement"]]
+
+cb = ContentNeighbor(cont, code, predicted_label)
+r = cb.createModel()
+rectf = cb.recommend(5, r)
 nn = Neighbors(instance)
-nn.getNeighbors(3)
+nn.getNeighbors(3, rectf)

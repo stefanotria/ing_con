@@ -1,6 +1,6 @@
 # Classe contente i metodi per settare le query in sparql e ottenere le info dei quadri
 from SPARQLWrapper import SPARQLWrapper, JSON
-from urllib2 import HTTPError
+from urllib.error import HTTPError
 import time
 
 
@@ -112,7 +112,7 @@ class Query:
                 ?mov rdfs:label ?Movement .
                 ?Uri wdt:P180 ?c .
                 ?c rdfs:label ?Content .
-                FILTER(lang(?Content)='en')
+                FILTER(lang(?Content)='it')
                 FILTER(lang(?Author)='en')
                 FILTER(lang(?Museum)='en')
                 FILTER(lang(?Genre)='en')
@@ -131,13 +131,33 @@ class Query:
             r.append(val)
         return r
 
+    def getContent(self):
+        query = """
+                SELECT (group_concat(DISTINCT ?Content;SEPARATOR=" ") as ?Contents)
+                WHERE {
+                OPTIONAL{wd:""" + self.paint + """ wdt:P180 ?c .}
+                OPTIONAL{?c rdfs:label ?Content .}
+                FILTER(lang(?Content)='it')
+                }
+                LIMIT 1"""
+        results = self.setQuery(query, self.wd, 0)
+        response = {}
+        r = []
+        for result in results["results"]["bindings"]:
+            val = []
+            for value in results["head"]["vars"]:
+                response[value] = result[value]["value"]
+                val.append(response[value])
+            r.append(val)
+        return r[0]
+
     def setQuery(self, query, wrapper, count):  # count: conteggio http error 429
         try:
             wrapper.setQuery(query)
             wrapper.setReturnFormat(JSON)
             results = wrapper.query().convert()
             return results
-        except HTTPError, e:
+        except HTTPError as e:
             if e.code == 429:
                 if count == 4:
                     print("Timeout error. Terminazione programma.")

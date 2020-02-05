@@ -13,7 +13,7 @@ class Collection:
         results = self.compactContent(results)
 
         df = pd.DataFrame(results, columns=['Uri', 'Paint', 'Author', 'Museum', 'Genre', 'Movement', 'Content'])
-        df.to_csv(self.path, encoding='utf-8', index=False)
+        df.to_csv(self.path, index=False)
 
     def orderResults(self, results):
         for index in range(0, len(results)):

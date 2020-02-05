@@ -40,14 +40,20 @@ class Neighbors:
             w.append(0)
         return w
 
-    def getNeighbors(self, k):
+    def getNeighbors(self, k, recs):
         distance = []
         for index in self.dataset.keys():
             dist = self.getDistance(self.instance_vector, self.dataset.get(index))
             if dist > 0:
+                for rec in recs:
+                    if (index == rec[1]):
+                        dist = (dist+rec[0])
                 distance.append((index, dist))
         distance.sort(key=lambda x: x[1])
         print(distance)
+
+
+
 
     def getDistance(self, vector1, vector2):
         cosine = 1 - spatial.distance.cosine(vector1, vector2)
