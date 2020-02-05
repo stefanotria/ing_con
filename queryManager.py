@@ -1,5 +1,8 @@
 # Classe contente i metodi per settare le query in sparql e ottenere le info dei quadri
 from SPARQLWrapper import SPARQLWrapper, JSON
+from urllib2 import HTTPError
+import time
+
 
 class Query:
     wd = SPARQLWrapper("https://query.wikidata.org/sparql")
@@ -23,19 +26,19 @@ class Query:
     # restituisce la data in cui e' stata realizzata l'opera
     def getDate(self):
         self.select += "?Date "
-        self.where += "OPTIONAL{wd:" + self.paint +  " wdt:P571 ?Date .} \n"
+        self.where += "OPTIONAL{wd:" + self.paint + " wdt:P571 ?Date .} \n"
 
     # restituisce il nome del museo in cui e' custodita l'opera
     def getMuseum(self):
         self.select += "?Museum "
-        self.where += """OPTIONAL{wd:""" +self.paint + """ wdt:P276 ?m .}
+        self.where += """OPTIONAL{wd:""" + self.paint + """ wdt:P276 ?m .}
               OPTIONAL{?m rdfs:label ?Museum .}\n"""
-        #self.filter += "FILTER(lang(?Museum)='en')\n"
+        # self.filter += "FILTER(lang(?Museum)='en')\n"
 
     # restituisce il movimento del dipinto
     def getMovement(self):
         self.select += "?Movement "
-        self.where += """OPTIONAL{wd:""" +self.paint + """ wdt:P135  ?mov .}
+        self.where += """OPTIONAL{wd:""" + self.paint + """ wdt:P135  ?mov .}
                         OPTIONAL{?mov rdfs:label ?Movement .}\n"""
         self.filter += "FILTER(lang(?Movement)='en')\n"
 
@@ -49,17 +52,17 @@ class Query:
     # restituisce altezza e larghezza del dipinto
     def getDimension(self):
         self.select += "?Height ?Width"
-        self.where += """OPTIONAL{wd:"""+ self.paint + """ wdt:P2048  ?Height .}
-                        OPTIONAL{wd:"""+self.paint+ """ wdt:P2049 ?Width .}\n"""
+        self.where += """OPTIONAL{wd:""" + self.paint + """ wdt:P2048  ?Height .}
+                        OPTIONAL{wd:""" + self.paint + """ wdt:P2049 ?Width .}\n"""
 
-    #restituisce la nazione
+    # restituisce la nazione
     def getLocation(self):
         query = """ SELECT ?Location
                     WHERE {
-                      OPTIONAL{wd:"""+self.paint+""" wdt:P276 ?m .}
+                      OPTIONAL{wd:""" + self.paint + """ wdt:P276 ?m .}
                       ?m wdt:P17 ?Location .
                     } LIMIT 1 """
-        results = self.setQuery(query, self.wd)
+        results = self.setQuery(query, self.wd, 0)
         response = {}
         for result in results["results"]["bindings"]:
             for value in results["head"]["vars"]:
@@ -73,7 +76,7 @@ class Query:
         self.query += self.filter
         self.query += "} LIMIT 1 "
 
-    def getInfo(self, name,author):
+    def getInfo(self, name, author):
         query = """ 
         PREFIX dbo: <http://dbpedia.org/ontology/>
         PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
@@ -85,7 +88,7 @@ class Query:
         ?opera rdfs:label ?Name FILTER regex(?Name, '""" + name + """') FILTER (lang(?Name) = "en") .
         ?opera dbo:abstract ?Description FILTER (lang(?Description) = "en") .
         } LIMIT 1"""
-        results = self.setQuery(query, self.db)
+        results = self.setQuery(query, self.db, 0)
         response = {}
         for result in results["results"]["bindings"]:
             for value in results["head"]["vars"]:
@@ -101,7 +104,7 @@ class Query:
                 ?Uri wdt:P170 ?a .
                 ?a rdfs:label ?Author .
                 ?Uri wdt:P276 ?m .
-                ?m wdt:P17 <"""+location+""">.
+                ?m wdt:P17 <""" + location + """>.
                 ?m rdfs:label ?Museum .
                 ?Uri wdt:P136 ?gen .
                 ?gen rdfs:label ?Genre .
@@ -116,7 +119,7 @@ class Query:
                 FILTER(lang(?Movement)='en')
                 }
                 LIMIT 1000"""
-        results = self.setQuery(query, self.wd)
+        results = self.setQuery(query, self.wd, 0)
         response = {}
         r = []
 
@@ -128,15 +131,24 @@ class Query:
             r.append(val)
         return r
 
-
-    def setQuery(self, query, wrapper):
-        wrapper.setQuery(query)
-        wrapper.setReturnFormat(JSON)
-        results = wrapper.query().convert()
-        return results
+    def setQuery(self, query, wrapper, count):  # count: conteggio http error 429
+        try:
+            wrapper.setQuery(query)
+            wrapper.setReturnFormat(JSON)
+            results = wrapper.query().convert()
+            return results
+        except HTTPError, e:
+            if e.code == 429:
+                if count == 4:
+                    print("Timeout error. Terminazione programma.")
+                    raise SystemExit
+                print("Si e' verificato un HTTP Error 429. Riprovo...")
+                time.sleep(5);
+                return self.setQuery(query, wrapper, count + 1)
+            raise SystemExit
 
     def runQuery(self):
-        results = self.setQuery(self.query, self.wd)
+        results = self.setQuery(self.query, self.wd, 0)
         response = {}
         for result in results["results"]["bindings"]:
             for value in results["head"]["vars"]:

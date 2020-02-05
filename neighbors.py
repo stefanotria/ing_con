@@ -2,13 +2,16 @@ import pandas as pd
 import csv
 import numpy as np
 from scipy import spatial
+
+
 class Neighbors:
     dataset = {}
     instance = ""
-    instance_vector = [1.45,1.20,1.75,1.65]
+    instance_vector = [1.45, 1.20, 1.75, 1.65]
+
     def __init__(self, instance):
         self.instance = instance
-        with open('collection.csv', mode='r', errors="ignore") as csv_file:
+        with open('collection.csv', mode='r') as csv_file:
             csv_reader = csv.DictReader(csv_file)
             for row in csv_reader:
                 r = row["Author"], row["Museum"], row["Genre"], row["Movement"]
@@ -18,10 +21,11 @@ class Neighbors:
 
     def setWeights(self, row):
         w = []
-        #for index in range(len(row)):
-        if(self.instance[0] == row[0]):
+        # for index in range(len(row)):
+        if (self.instance[0] == row[0]):
             w.append(1.45)
-        else: w.append(0)
+        else:
+            w.append(0)
         if (self.instance[1] == row[1]):
             w.append(1.20)
         else:
@@ -40,7 +44,7 @@ class Neighbors:
         distance = []
         for index in self.dataset.keys():
             dist = self.getDistance(self.instance_vector, self.dataset.get(index))
-            if dist >0:
+            if dist > 0:
                 distance.append((index, dist))
         distance.sort(key=lambda x: x[1])
         print(distance)
