@@ -2,16 +2,17 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
+
 class ContentNeighbor:
     ds = []
     predicted_label = ""
     uri = ""
+
     def __init__(self, content, code, predicted_label):
         self.predicted_label = predicted_label
         self.ds = pd.read_csv("collection.csv", usecols=["Uri", "Content"])
         self.uri = "http://www.wikidata.org/entity/" + code
-        self.ds.loc[len(self.ds)] = [self.uri,content[0]]
-
+        self.ds.loc[len(self.ds)] = [self.uri, content[0]]
 
     def createModel(self):
         tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 3), min_df=0, stop_words='english')
@@ -27,10 +28,10 @@ class ContentNeighbor:
 
     def recommend(self, num, results):
 
-        print("Recommending " + str(num) + " products similar to " + self.predicted_label + "...")
-        print("-------")
+        #print("Recommending " + str(num) + " products similar to " + self.predicted_label + "...")
+        #print("-------")
         recs = results[self.uri][:num]
-        for rec in recs:
-            print("Recommended: " + rec[1] + " (score:" + str(rec[0]) + ")")
+        #for rec in recs:
+            #print("Recommended: " + rec[1] + " (score:" + str(rec[0]) + ")")
         recs2 = results[self.uri][:len(self.ds)]
         return recs2
