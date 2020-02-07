@@ -7,6 +7,7 @@ from queryManager import Query
 from recognition import Recognition
 from dataset import Dataset
 from collection import Collection
+
 ds = Dataset(5)
 rec = Recognition(ds)
 
@@ -20,8 +21,8 @@ predicted_class = rec.predictImage(image)
 
 print(predicted_class)
 
-predicted_label = ds.getLabelByClass('Artwork', predicted_class) #Restituisce il nome
-code = ds.getLabelByClass('Code', predicted_class) #Restituisce il codice
+predicted_label = ds.getLabelByClass('Artwork', predicted_class)  # Restituisce il nome
+code = ds.getLabelByClass('Code', predicted_class)  # Restituisce il codice
 
 print("Cerco informazioni per: " + predicted_label)
 query = Query(code)
@@ -39,7 +40,7 @@ print(info)
 location = query.getLocation()
 
 coll = query.createCollection(location["Location"])
-Collection(coll)
+Collection(coll, code)
 cont = query.getContent()
 instance = [response["Author"], response["Museum"], response["Genre"], response["Movement"]]
 

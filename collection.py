@@ -8,9 +8,11 @@ from queryManager import Query
 class Collection:
     path = "collection.csv"
 
-    def __init__(self, results):
+    def __init__(self, results, code):
         self.orderResults(results)
         results = self.compactContent(results)
+
+        results = self.trimItSelf(results, code)
 
         df = pd.DataFrame(results, columns=['Uri', 'Paint', 'Author', 'Museum', 'Genre', 'Movement', 'Content'])
         df.to_csv(self.path, index=False)
@@ -39,3 +41,17 @@ class Collection:
             r.append(results[index])
             index = flag
         return r
+
+    def trimItSelf(self, results, code):
+        index = -1
+        i = 0
+        while i < len(results):
+            uri = results[i][0]
+            if code in uri:
+                index = i
+                break
+            i += 1
+        if index != -1:
+            results = np.delete(results, index, axis=0)
+        return results
+

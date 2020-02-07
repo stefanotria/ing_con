@@ -9,7 +9,7 @@ class Neighbors:
     instance = ""
     instance_vector = [1.45, 1.20, 1.75, 1.65]
 
-    def __init__(self, instance):
+    def __init__(self, instance): # codePainting: quadro predetto
         self.instance = instance
         with open('collection.csv', mode='r') as csv_file:
             csv_reader = csv.DictReader(csv_file)
@@ -22,19 +22,19 @@ class Neighbors:
     def setWeights(self, row):
         w = []
         # for index in range(len(row)):
-        if (self.instance[0] == row[0]):
+        if self.instance[0] == row[0]:
             w.append(1.45)
         else:
             w.append(0)
-        if (self.instance[1] == row[1]):
+        if self.instance[1] == row[1]:
             w.append(1.20)
         else:
             w.append(0)
-        if (self.instance[2] == row[2]):
+        if self.instance[2] == row[2]:
             w.append(1.75)
         else:
             w.append(0)
-        if (self.instance[3] == row[3]):
+        if self.instance[3] == row[3]:
             w.append(1.65)
         else:
             w.append(0)
@@ -47,13 +47,13 @@ class Neighbors:
             if dist > 0:
                 for rec in recs:
                     if (index == rec[1]):
-                        dist = (dist+rec[0])
+                        dist = (dist + rec[0])
                 distance.append((index, dist))
         distance.sort(key=lambda x: x[1])
-        print(distance)
+        distance.reverse()
+        del distance[k:]
 
-
-
+        return distance
 
     def getDistance(self, vector1, vector2):
         cosine = 1 - spatial.distance.cosine(vector1, vector2)
