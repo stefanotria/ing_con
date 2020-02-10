@@ -11,7 +11,7 @@ class Neighbors:
 
     def __init__(self, instance): # codePainting: quadro predetto
         self.instance = instance
-        with open('collection.csv', mode='r') as csv_file:
+        with open('collection.csv', mode='r', encoding="utf8") as csv_file:
             csv_reader = csv.DictReader(csv_file)
             for row in csv_reader:
                 r = row["Author"], row["Museum"], row["Genre"], row["Movement"]
