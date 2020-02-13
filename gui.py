@@ -106,12 +106,13 @@ def showResults(label, picture, code):
     rectf = cb.recommend(5, r)
     nn = Neighbors(instance)
     neighbors = nn.getNeighbors(3, rectf)
-
-    i = 0
-    for (p, s) in neighbors:
-        print(p + " - " + str(s))
-        Button(rec_menu, text=p, command=partial(openLink, p)).grid(row=i, column=1, padx=20, sticky=W + E + N + S)
-        Label(rec_menu, text=s).grid(row=i, column=2, padx=20, sticky=W + E + N + S)
+    Label(rec_menu, text="QUADRI SIMILI CONSIGLIATI").grid(row=0, column=2, padx=20, sticky=W + E + N + S)
+    i = 1
+    for (nn) in neighbors:
+        print(nn[0] + " - " + str(nn[1]))
+        Button(rec_menu, text=nn[0], command=partial(openLink, nn[0])).grid(row=i, column=1, padx=20, sticky=W + E + N + S)
+        Label(rec_menu, text=nn[1]).grid(row=i, column=2, padx=20, sticky=W + E + N + S)
+        Label(rec_menu, text=nn[2]).grid(row=i, column=2, padx=20, sticky=W + E + N + S)
         i += 1
 
 

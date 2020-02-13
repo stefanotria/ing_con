@@ -2,10 +2,12 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 from urllib.error import HTTPError
 import time
+import sys
 
 
 class Query:
-    wd = SPARQLWrapper("https://query.wikidata.org/sparql")
+    user_agent = "ing_con/%s.%s" % (sys.version_info[0], sys.version_info[1])
+    wd = SPARQLWrapper("https://query.wikidata.org/sparql", agent=user_agent)
     db = SPARQLWrapper("http://dbpedia.org/sparql")
     paint = ""
 
