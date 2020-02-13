@@ -1,0 +1,14 @@
+
+__pycache__/tfidf.cpython-37.pyc
+__pycache__/recognition.cpython-37.pyc
+__pycache__/queryManager.cpython-37.pyc
+__pycache__/neighbors.cpython-37.pyc
+__pycache__/InformationWindow.cpython-37.pyc
+__pycache__/dataset.cpython-37.pyc
+__pycache__/collection.cpython-37.pyc
+.idea/workspace.xml
+.DS_Store
+paintings/test/.DS_Store
+paintings/train/.DS_Store
+*.pyc
+collection.csv
