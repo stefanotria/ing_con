@@ -2,23 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bb47841-f62d-4809-ade5-39d4c7726cb8" name="Default Changelist" comment="">
-<<<<<<< Updated upstream
-      <change afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/collection.csv" beforeDir="false" afterPath="$PROJECT_DIR$/collection.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collection.py" beforeDir="false" afterPath="$PROJECT_DIR$/collection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neighbors.py" beforeDir="false" afterPath="$PROJECT_DIR$/neighbors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/picture.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tfidf.py" beforeDir="false" afterPath="$PROJECT_DIR$/tfidf.py" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/InformationWindow.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collection.csv" beforeDir="false" afterPath="$PROJECT_DIR$/collection.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/label.csv" beforeDir="false" afterPath="$PROJECT_DIR$/label.csv" afterDir="false" />
->>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,15 +208,10 @@
       <workItem from="1580891998881" duration="118000" />
       <workItem from="1580893105975" duration="19895000" />
       <workItem from="1580978038680" duration="12766000" />
-<<<<<<< Updated upstream
-=======
       <workItem from="1581073772550" duration="1728000" />
       <workItem from="1581347750769" duration="8596000" />
       <workItem from="1581498553795" duration="1998000" />
       <workItem from="1581586003199" duration="323000" />
-      <workItem from="1581596751927" duration="270000" />
-      <workItem from="1581598810076" duration="132000" />
->>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -241,88 +223,46 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="551" y="335" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1579686307575" />
-<<<<<<< Updated upstream
-    <state width="1638" height="353" key="GridCell.Tab.0.bottom" timestamp="1581070504063">
-      <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state width="1638" height="353" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1581070447638" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580927256557" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581352710740" />
     <state width="1638" height="353" key="GridCell.Tab.0.bottom/0.23.1680.974@0.23.1680.974" timestamp="1581070504063" />
-    <state width="1783" height="184" key="GridCell.Tab.0.bottom/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1580235720621" />
-    <state width="1638" height="353" key="GridCell.Tab.0.center" timestamp="1581070504061">
-      <screen x="0" y="23" width="1680" height="974" />
-    </state>
-    <state width="1638" height="353" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1581070447637" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580927256557" />
-    <state width="1638" height="353" key="GridCell.Tab.0.center/0.23.1680.974@0.23.1680.974" timestamp="1581070504061" />
-    <state width="1783" height="184" key="GridCell.Tab.0.center/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1580235720621" />
-    <state width="1638" height="353" key="GridCell.Tab.0.left" timestamp="1581070504060">
-=======
-    <state x="632" y="134" key="CommitChangelistDialog2" timestamp="1581586335317">
+    <state width="1783" height="354" key="GridCell.Tab.0.bottom/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1581586170713" />
+    <state width="1783" height="354" key="GridCell.Tab.0.center" timestamp="1581586170713">
       <screen x="94" y="0" width="1826" height="1080" />
     </state>
-    <state x="632" y="134" key="CommitChangelistDialog2/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1581586335317" />
-    <state width="1127" height="197" key="GridCell.Tab.0.bottom" timestamp="1581597021697">
-      <screen x="0" y="23" width="1680" height="974" />
-    </state>
-    <state width="1638" height="197" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1581590664488" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581352710740" />
-    <state width="1127" height="197" key="GridCell.Tab.0.bottom/0.23.1680.974@0.23.1680.974" timestamp="1581597021697" />
-    <state width="1783" height="354" key="GridCell.Tab.0.bottom/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1581586170713" />
-    <state width="1127" height="197" key="GridCell.Tab.0.center" timestamp="1581597021696">
-      <screen x="0" y="23" width="1680" height="974" />
-    </state>
-    <state width="1638" height="197" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1581590664486" />
+    <state width="1638" height="353" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1581070447637" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1581352710738" />
-    <state width="1127" height="197" key="GridCell.Tab.0.center/0.23.1680.974@0.23.1680.974" timestamp="1581597021696" />
-    <state width="1783" height="354" key="GridCell.Tab.0.center/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1581586170713" />
-    <state width="1127" height="197" key="GridCell.Tab.0.left" timestamp="1581597021696">
->>>>>>> Stashed changes
-      <screen x="0" y="23" width="1680" height="974" />
+    <state width="1638" height="353" key="GridCell.Tab.0.center/0.23.1680.974@0.23.1680.974" timestamp="1581070504061" />
     </state>
     <state width="1638" height="197" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1581590664486" />
     <state width="1638" height="264" key="GridCell.Tab.0.left/0.0.1680.1050@0.23.1680.974" timestamp="1580996439292" />
-<<<<<<< Updated upstream
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580927256557" />
     <state width="1638" height="353" key="GridCell.Tab.0.left/0.23.1680.974@0.23.1680.974" timestamp="1581070504060" />
-    <state width="1783" height="184" key="GridCell.Tab.0.left/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1580235720621" />
-    <state width="1638" height="353" key="GridCell.Tab.0.right" timestamp="1581070504062">
-      <screen x="0" y="23" width="1680" height="974" />
+    <state width="1783" height="354" key="GridCell.Tab.0.left/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1581586170713" />
+    <state width="1783" height="354" key="GridCell.Tab.0.right" timestamp="1581586170713">
+      <screen x="94" y="0" width="1826" height="1080" />
     </state>
     <state width="1638" height="353" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1581070447637" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580927256557" />
-    <state width="1638" height="353" key="GridCell.Tab.0.right/0.23.1680.974@0.23.1680.974" timestamp="1581070504062" />
-    <state width="1783" height="184" key="GridCell.Tab.0.right/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1580235720621" />
-    <state width="1638" height="363" key="GridCell.Tab.1.bottom" timestamp="1579774665323">
-      <screen x="0" y="0" width="1680" height="1050" />
-=======
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1581352710738" />
-    <state width="1127" height="197" key="GridCell.Tab.0.left/0.23.1680.974@0.23.1680.974" timestamp="1581597021696" />
-    <state width="1783" height="354" key="GridCell.Tab.0.left/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1581586170713" />
-    <state width="1127" height="197" key="GridCell.Tab.0.right" timestamp="1581597021696">
-      <screen x="0" y="23" width="1680" height="974" />
-    </state>
-    <state width="1638" height="197" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1581590664487" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1581352710738" />
-    <state width="1127" height="197" key="GridCell.Tab.0.right/0.23.1680.974@0.23.1680.974" timestamp="1581597021696" />
-    <state width="1783" height="354" key="GridCell.Tab.0.right/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1581586170713" />
-    <state width="1783" height="354" key="GridCell.Tab.1.bottom" timestamp="1581586170713">
-      <screen x="94" y="0" width="1826" height="1080" />
->>>>>>> Stashed changes
+    <state width="1638" height="353" key="GridCell.Tab.0.right/0.23.1680.974@0.23.1680.974" timestamp="1581070504062" />
     </state>
     <state width="1638" height="363" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1579774665323" />
-    <state width="1638" height="363" key="GridCell.Tab.1.center" timestamp="1579774665323">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1783" height="354" key="GridCell.Tab.1.bottom/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1581586170713" />
+    <state width="1783" height="354" key="GridCell.Tab.1.center" timestamp="1581586170713">
+      <screen x="94" y="0" width="1826" height="1080" />
     </state>
     <state width="1638" height="363" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1579774665323" />
-    <state width="1638" height="363" key="GridCell.Tab.1.left" timestamp="1579774665322">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1783" height="354" key="GridCell.Tab.1.center/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1581586170713" />
+    <state width="1783" height="354" key="GridCell.Tab.1.left" timestamp="1581586170713">
+      <screen x="94" y="0" width="1826" height="1080" />
     </state>
     <state width="1638" height="363" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1579774665322" />
-    <state width="1638" height="363" key="GridCell.Tab.1.right" timestamp="1579774665323">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1783" height="354" key="GridCell.Tab.1.left/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1581586170713" />
+    <state width="1783" height="354" key="GridCell.Tab.1.right" timestamp="1581586170713">
+      <screen x="94" y="0" width="1826" height="1080" />
     </state>
     <state width="1638" height="363" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1579774665323" />
+    <state width="1783" height="354" key="GridCell.Tab.1.right/94.0.1826.1080/1920.0.1536.824@94.0.1826.1080" timestamp="1581586170713" />
     <state x="473" y="254" key="RollbackChangesDialog" timestamp="1579634261159">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -356,17 +296,8 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580899240154" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-<<<<<<< Updated upstream
-    <SUITE FILE_PATH="coverage/ing_con$gui.coverage" NAME="gui Coverage Results" MODIFIED="1581070504036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-=======
-    <SUITE FILE_PATH="coverage/ing_con$gui.coverage" NAME="gui Coverage Results" MODIFIED="1581589167417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
->>>>>>> Stashed changes
     <SUITE FILE_PATH="coverage/ing_con$main.coverage" NAME="main Coverage Results" MODIFIED="1580980338552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ing_con$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1581596937557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ing_con$query.coverage" NAME="query Coverage Results" MODIFIED="1579619596083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-<<<<<<< Updated upstream
-=======
-    <SUITE FILE_PATH="coverage/ing_con$Demo.coverage" NAME="Demo Coverage Results" MODIFIED="1581088787383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
->>>>>>> Stashed changes
   </component>
 </project>

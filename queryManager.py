@@ -2,10 +2,12 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 from urllib.error import HTTPError
 import time
+import sys
 
 
 class Query:
-    wd = SPARQLWrapper("https://query.wikidata.org/sparql")
+    user_agent = "ing_con/%s.%s" % (sys.version_info[0], sys.version_info[1])
+    wd = SPARQLWrapper("https://query.wikidata.org/sparql", agent=user_agent)
     db = SPARQLWrapper("http://dbpedia.org/sparql")
     paint = ""
 
@@ -33,7 +35,7 @@ class Query:
         self.select += "?Museum "
         self.where += """OPTIONAL{wd:""" + self.paint + """ wdt:P276 ?m .}
               OPTIONAL{?m rdfs:label ?Museum .}\n"""
-        # self.filter += "FILTER(lang(?Museum)='en')\n"
+        self.filter += "FILTER(lang(?Museum)='en')\n"
 
     # restituisce il movimento del dipinto
     def getMovement(self):
@@ -93,6 +95,21 @@ class Query:
         for result in results["results"]["bindings"]:
             for value in results["head"]["vars"]:
                 response[value] = result[value]["value"]
+        if response == {}:
+            query = """ 
+                    PREFIX dbo: <http://dbpedia.org/ontology/>
+                    PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+                    SELECT ?Description {
+                    ?opera a dbo:Artwork .
+                    ?opera dbo:author ?author .
+
+                    ?opera rdfs:label ?Name FILTER regex(?Name, '""" + name + """') FILTER (lang(?Name) = "en") .
+                    ?opera dbo:abstract ?Description FILTER (lang(?Description) = "en") .
+                    } LIMIT 1"""
+            results = self.setQuery(query, self.db, 0)
+            for result in results["results"]["bindings"]:
+                for value in results["head"]["vars"]:
+                    response[value] = result[value]["value"]
         return response
 
     def createCollection(self, location):
