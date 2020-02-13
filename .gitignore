@@ -12,3 +12,4 @@ paintings/test/.DS_Store
 paintings/train/.DS_Store
 *.pyc
 collection.csv
+.idea
