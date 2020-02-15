@@ -67,6 +67,3 @@ class Neighbors:
     def getDistance(self, vector1, vector2):
         cosine = 1 - spatial.distance.cosine(vector1, vector2)
         return cosine
-        """vector1 = np.array(vector1)
-        vector2 = np.array(vector2)
-        return np.linalg.norm(vector1 - vector2)"""

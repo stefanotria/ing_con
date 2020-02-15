@@ -27,11 +27,5 @@ class ContentNeighbor:
         return results
 
     def recommend(self, num, results):
-
-        #print("Recommending " + str(num) + " products similar to " + self.predicted_label + "...")
-        #print("-------")
-        recs = results[self.uri][:num]
-        #for rec in recs:
-            #print("Recommended: " + rec[1] + " (score:" + str(rec[0]) + ")")
-        recs2 = results[self.uri][:len(self.ds)]
-        return recs2
+        recs = results[self.uri][:len(self.ds)]
+        return recs
