@@ -1,7 +1,7 @@
 # Classe contenente il riconoscitore delle immagini
 
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2D
+from tensorflow.keras.layers import Dense, Conv2D, Flatten, MaxPooling2D
 from tensorflow.keras.models import load_model
 from PIL import Image
 from pathlib import Path
@@ -46,7 +46,7 @@ class Recognition:
 
     def compileModel(self):
         self.model.compile(optimizer='adam',
-                           loss='binary_crossentropy',
+                           loss='categorical_crossentropy',
                            metrics=['accuracy'])
 
     def fitModel(self):

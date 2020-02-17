@@ -1,8 +1,5 @@
 import pandas as pd
-import csv
 import numpy as np
-import io
-from queryManager import Query
 
 
 class Collection:
@@ -11,9 +8,7 @@ class Collection:
     def __init__(self, results, code):
         self.orderResults(results)
         results = self.compactContent(results)
-
         results = self.trimItSelf(results, code)
-
         df = pd.DataFrame(results, columns=['Uri', 'Paint', 'Author', 'Museum', 'Genre', 'Movement', 'Content'])
         df.to_csv(self.path, index=False)
 
@@ -27,7 +22,6 @@ class Collection:
 
     def compactContent(self, results):
         r = []
-        flag = 0
         index = 0
         while (index < len(results) - 1):
             val = results[index]

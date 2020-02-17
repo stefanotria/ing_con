@@ -1,17 +1,12 @@
 from tkinter import *
-
 from tkinter.filedialog import askopenfilename
-
 from PIL import Image
 from recognition import Recognition
 from dataset import Dataset
-
 from tfidf import ContentNeighbor
 from neighbors import Neighbors
 from queryManager import Query
-
 from collection import Collection
-
 from InformationWindow import InformationWindow
 
 
@@ -39,8 +34,6 @@ class MainWindow(Frame):
         image = Image.open(str(filename))
         predicted_class = rec.predictImage(image)
 
-        print(predicted_class)
-
         predicted_label = ds.getLabelByClass('Artwork', predicted_class)  # Restituisce il nome
         code = ds.getLabelByClass('Code', predicted_class)  # Restituisce il codice
 
@@ -58,7 +51,7 @@ class MainWindow(Frame):
         query.getMovement()
         query.buildUp()
         response = query.runQuery()
-
+        response["Date"] = response["Date"][0:4]
         info = query.getInfo(painting, response["Author"])
         print(info)
         location = query.getLocation()
@@ -73,16 +66,18 @@ class MainWindow(Frame):
         rectf = cb.recommend(5, r)
         nn = Neighbors(instance)
         neighbors = nn.getNeighbors(6, rectf)
+        infoRecommended = []
+
+        for n in neighbors:
+            infoRecommended.append(query.getInfoRecommended(n[0]))
 
         newWindow = Toplevel(self.master)
-        informationWindow = InformationWindow(newWindow, painting, code, picture, response, info, neighbors)
-
+        informationWindow = InformationWindow(newWindow, painting, code, picture, response, info, neighbors, infoRecommended)
 
 def main():
     root = Tk()
     app = MainWindow(root)
     root.mainloop()
-
 
 if __name__ == '__main__':
     main()

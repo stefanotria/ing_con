@@ -1,24 +1,22 @@
 from __future__ import division
-
 from tkinter import *
-
 from PIL import ImageTk, Image
-
+import PIL.ImageTk
 from functools import partial
-
+from urllib.request import urlopen
 import webbrowser
 
 
 class InformationWindow():
 
-    def __init__(self, master, painting, code, picture, response, info, neighbors):
+    def __init__(self, master, painting, code, picture, response, info, neighbors, infoRecommended):
         master.resizable(False, False)
         self.master = master
 
         self.master.title(painting)
-        self.showResults(painting, code, picture, response, info, neighbors)
+        self.showResults(painting, code, picture, response, info, neighbors, infoRecommended)
 
-    def showResults(self, painting, code, picture, response, info, neighbors):
+    def showResults(self, painting, code, picture, response, info, neighbors, infoRecommended):
         # -- SHOW RESULTS --
 
         Label(self.master,
@@ -95,11 +93,20 @@ class InformationWindow():
         i = 1
         for (nn) in neighbors:
             print(nn[0] + " - " + str(nn[1]))
-            Button(rec_menu, text=nn[0], command=partial(self.openLink, nn[0])).grid(row=i, column=1, padx=20,
+            Button(rec_menu, text=infoRecommended[i-1], command=partial(self.openLink, nn[0])).grid(row=i, column=1, padx=20,
                                                                                      sticky=W + E + N + S)
             Label(rec_menu, text=nn[1]).grid(row=i, column=2, padx=20, sticky=W + E + N + S)
-            Label(rec_menu, text=nn[2]).grid(row=i, column=2, padx=20, sticky=W + E + N + S)
+            Label(rec_menu, text=nn[2]).grid(row=i, column=3, padx=20, sticky=W + E + N + S)
             i += 1
 
     def openLink(self, link):
         webbrowser.open(link)
+
+    def openImgURl(url):
+        if len(url) > 0:
+            img = PIL.Image.open(urlopen(url))
+            img = img.resize((200, 150), PIL.Image.ANTIALIAS)
+            photo = ImageTk.PhotoImage(img)
+            return photo
+        else:
+            return -1

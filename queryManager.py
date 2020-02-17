@@ -184,6 +184,23 @@ class Query:
                 return self.setQuery(query, wrapper, count + 1)
             raise SystemExit
 
+    def getInfoRecommended(self, uri):
+        query = """
+                SELECT ?Name
+                WHERE{
+                    <""" + uri + """> rdfs:label ?Name FILTER(lang(?Name)='en')
+                }
+        """
+        results = self.setQuery(query, self.wd, 0)
+        response = {}
+        r = []
+        for result in results["results"]["bindings"]:
+            val = ""
+            for value in results["head"]["vars"]:
+                response[value] = result[value]["value"]
+                val = response[value]
+        return val
+
     def runQuery(self):
         results = self.setQuery(self.query, self.wd, 0)
         response = {}
